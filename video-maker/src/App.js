@@ -1,13 +1,12 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
 import Video from "./components/Video.js";
 import Home from "./components/Home.js";
 
 function App() {
   return (
-     <Router>
+    <Router>
       <div className="App">
         <video autoPlay muted loop id="myVideo">
           <source src="./assets/final.mp4" type="video/mp4" />
