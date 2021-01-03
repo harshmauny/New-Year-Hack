@@ -5,7 +5,7 @@ import '../App.css';
 
 var FontAwesome = require('react-fontawesome');
 
-export default class Video extends Component {
+export default class Home extends Component {
     render() {
         return (
             <div>

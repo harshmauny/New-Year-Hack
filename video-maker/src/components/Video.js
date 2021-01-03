@@ -1,64 +1,37 @@
-import React from "react";
-import 'react-dropzone-uploader/dist/styles.css'
-import Dropzone from 'react-dropzone-uploader'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css';
 
-const Layout = ({ input, previews, submitButton, dropzoneProps, files, extra: { maxFiles } }) => {
-    return (
-        <div>
-            <div {...dropzoneProps}>
-                {files.length < maxFiles && input}
-            </div>
-            {previews}
-
-            {files.length > 0 && submitButton}
-        </div>
-    )
-}
-
-const SimpleDropZone = () => {
-
-    // Payload data and url to upload files
-    const getUploadParams = ({ file }) => {
-        const body = new FormData();
-        body.append('file', file);
-        console.log(body);
-        return { url: 'https://lets-rewind-api.herokuapp.com/convert', body }
-    }
-
-    // Return the current status of files being uploaded
-    const handleChangeStatus = ({ meta, file }, status) => { console.log(status, meta, file) }
-
-    // Return array of uploaded files after submit button is clicked
-    // const handleSubmit = (files, allFiles) => {
-    //     console.log(files.map(f => f.meta))
-
-    // }
-
-    return (
-        <div className="main">
-            <div className="left" >
-                <Dropzone
-                    getUploadParams={getUploadParams}
-                    onChangeStatus={handleChangeStatus}
-                    // onSubmit={handleSubmit}
-                    accept="image/*"
-                    inputContent="Drag or Drop Images"
-                    styles={{
-                        dropzone: { width: "75%", height: 200, marginTop: 30, overflow: "hidden", textAlign: 'center', textColor: 'white' },
-                        submitButtonContainer: { textAlign: 'center' },
-                    }}
-                    LayoutComponent={Layout}
-                />
-            </div>
-            <div className="right">
-                <div className="instructions">
-                    <h1>instructions</h1>
+export default class Video extends Component {
+    render() {
+        return (
+            <div className="video">
+                <div className="text">
+                    <h1>Upload Images</h1>
+                    <div>
+                    <p>Instructions: </p>
+                    <p>- Upload you favourite photos (make sure they are of specified dimensions) of year 2020</p>
+                    <p>- Also, you can use our editor to fix dimensions</p>
+                    <p>- Once all images are uploaded, press the "generate your video" button and let the magic begin!</p>
+                    </div>
+                    <div className="upload">
+                        <form action="https://lets-rewind-api.herokuapp.com/convert" method="POST" encType="multipart/form-data">
+                            <div className="form-group">
+                                <input type="file" name="file" required multiple />
+                            </div>
+                            <div className="form-group">
+                                <button class="btn btn-block btn-danger">
+                                    Generate your video
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="" style={{marginTop: '10px'}}>
+                        <p>Getting error on upload? <Link to="/resize"><span>Resize Image</span></Link></p>
+                    </div>
                 </div>
             </div>
-
-        </div>
-
-    );
-};
-
-export default SimpleDropZone;
+        )
+    }
+}

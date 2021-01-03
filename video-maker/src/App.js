@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Video from "./components/Video.js";
 import Home from "./components/Home.js";
+import Resize from "./components/Resize.js";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         </div>
         <Route path="/" exact component={Home} />
         <Route path="/video" exact component={Video} />
+        <Route path="/resize" exact component={Resize} />
       </div>
     </Router>
   );
