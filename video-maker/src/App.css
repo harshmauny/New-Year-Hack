@@ -23,10 +23,99 @@
 
 .text {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'MadHacker';
   color: white;
-  font-size: 3rem;
   min-height: 100vh;
+}
+
+.text > h1 {
+  font-size: 5rem;
+}
+
+.text > p {
+
+}
+
+.angle1 {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.angle2 {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.angle4 {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  transform: rotateZ(180deg);
+}
+
+.angle3 {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  transform: rotateZ(180deg);
+}
+
+.horizontal {
+  height: 10px;
+  width: 75px;
+  background-color: white;
+}
+
+.vertical {
+  height: 75px;
+  width: 10px;
+  background-color: white;
+}
+
+.record {
+  color: white;
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  padding: 10px;
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.record > span {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.record > .dot {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(214, 18, 18);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .text {
+    margin: 0 1rem;
+  }
+  .text > h1 {
+    font-size: 4rem;
+  }
+  
+  .text > p {
+    font-size: .8rem;
+  }
 }
